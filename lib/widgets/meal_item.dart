@@ -7,9 +7,11 @@ class MealItem extends StatelessWidget {
   const MealItem({
     super.key,
     required this.meal,
+    required this.onSelectMeal,
   });
 
   final Meal meal;
+  final void Function(Meal) onSelectMeal;
 
   String get complexityText {
     String complexityName = meal.complexity.name;
@@ -38,6 +40,7 @@ class MealItem extends StatelessWidget {
       elevation: 2,
       child: InkWell(
         onTap: () {
+          onSelectMeal(meal);
           // Navigator.pushNamed(context, '/meal', arguments: meal);
         },
         child: Column(
